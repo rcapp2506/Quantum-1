@@ -9,3 +9,14 @@ C:\Users\vmadmin\Source\Repos\Quantum\Samples\SuperdenseCoding\bin\Debug\netcore
 C:\Users\vmadmin\Source\Repos\Quantum\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.dll
 C:\Users\vmadmin\Source\Repos\Quantum\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.pdb
 C:\Users\vmadmin\source\repos\Quantum\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.csprojResolveAssemblyReference.cache
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\bin\Debug\netcoreapp2.0\SuperdenseCoding.deps.json
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\bin\Debug\netcoreapp2.0\SuperdenseCoding.runtimeconfig.json
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\bin\Debug\netcoreapp2.0\SuperdenseCoding.runtimeconfig.dev.json
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\bin\Debug\netcoreapp2.0\SuperdenseCoding.dll
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\bin\Debug\netcoreapp2.0\SuperdenseCoding.pdb
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.csprojAssemblyReference.cache
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.csproj.CoreCompileInputs.cache
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.AssemblyInfoInputs.cache
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.AssemblyInfo.cs
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.dll
+C:\Users\r_cap\source\repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.pdb

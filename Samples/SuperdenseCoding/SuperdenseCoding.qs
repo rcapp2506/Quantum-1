@@ -57,8 +57,11 @@ namespace Microsoft.Quantum.Samples.Superdense {
 
                 // Now test if the bits were transfered correctly.
                 AssertBoolEqual(bit1, decodedBit1, "bit1 should be transfered correctly" );
+				System.Console.WriteLine("Bit 1 sent successful!!\n" ... "\n");
                 AssertBoolEqual(bit2, decodedBit2, "bit2 should be transfered correctly" );
+				System.Console.WriteLine("Bit 2 sent successful!!\n" ... "\n");
 
+			
                 // Make sure that we return qubits back in 0 state.
                 ResetAll(qubits);
             }
