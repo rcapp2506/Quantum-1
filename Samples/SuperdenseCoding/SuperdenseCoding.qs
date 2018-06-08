@@ -2,7 +2,8 @@
 // Licensed under the MIT License.
 
 
-namespace Microsoft.Quantum.Samples.Superdense {
+namespace Microsoft.Quantum.Samples.SuperdenseEx 
+{
     open Microsoft.Quantum.Primitive;
     open Microsoft.Quantum.Canon;
 
@@ -34,13 +35,16 @@ namespace Microsoft.Quantum.Samples.Superdense {
     /// We encode the bits we are going to transmit in the run of the protocol
     /// in the array of Integers, so this function can be used
     /// with IterateThroughCartesianPower. 
-    operation SuperdenseCodingProtocolRun( bitsAsInt : Int[] ) : () {
-        body {
+   //operation SuperdenseCodingProtocolRun( bitsAsInt : Int[] ) : () {
+   operation SuperdenseCodingProtocolRun( bitsAsInt : Int[] ) : (Bool , Bool) 
+   {
+	        body {
             AssertIntEqual(2,Length(bitsAsInt),"Array bitsAsInt must have length 2");
 
             // Get the bits we are going to transmit.
             let ( bit1, bit2 ) = (bitsAsInt[0] == 0, bitsAsInt[1] == 0);
-
+			mutable bit1sent = false;
+			mutable bit2sent = false;
             // Get a temporary register for the protocol run.
             using (qubits = Qubit[2]) {
                 // introduce convenient names for the qubits
@@ -55,25 +59,34 @@ namespace Microsoft.Quantum.Samples.Superdense {
                 // "Send" qubit to B and let B decode two bits.
                 let ( decodedBit1, decodedBit2 ) = SuperdenseDecode(qubit1,qubit2);
 
-                // Now test if the bits were transfered correctly.
-                AssertBoolEqual(bit1, decodedBit1, "bit1 should be transfered correctly" );
-				System.Console.WriteLine("Bit 1 sent successful!!\n" ... "\n");
-                AssertBoolEqual(bit2, decodedBit2, "bit2 should be transfered correctly" );
-				System.Console.WriteLine("Bit 2 sent successful!!\n" ... "\n");
+					
 
+                // Now test if the bits were transfered correctly.
+                if (bit1 == decodedBit1 ){set bit1sent = true;}
+				AssertBoolEqual(bit1, decodedBit1, "bit1 should be transfered correctly" );
+				
+			
+				if (bit2 == decodedBit2 ){set bit2sent = true;}
+                AssertBoolEqual(bit2, decodedBit2, "bit2 should be transfered correctly" );
+				
+			
+			
 			
                 // Make sure that we return qubits back in 0 state.
                 ResetAll(qubits);
+				}
+			return ( bit1sent, bit2sent);
             }
-        }
     }
+
 
 
     /// # Summary 
     /// Creates an EPR ( also known as Bell ) pair from 2 qubits initialized 
     /// into zero state. 
     /// In Dirac notation EPR state is (|00⟩+|11⟩)/√2.
-    operation CreateEPRPair( qubit1 : Qubit, qubit2 : Qubit ) : () {
+    operation CreateEPRPair( qubit1 : Qubit, qubit2 : Qubit ) : () 
+	{
         body {
             // Check that the inputs are as expected.
             Assert([PauliZ], [qubit1], Zero,
@@ -99,7 +112,8 @@ namespace Microsoft.Quantum.Samples.Superdense {
     /// # Summary
     /// Encodes two bits of information in one qubit. The qubit is expected to 
     /// be a half of an EPR pair.
-    operation SuperdenseEncode( bit1 : Bool, bit2 : Bool, qubit : Qubit ) : () {
+    operation SuperdenseEncode( bit1 : Bool, bit2 : Bool, qubit : Qubit ) : () 
+	{
         body {
             if( bit1 ) { Z(qubit); }
             if( bit2 ) { X(qubit); }
@@ -108,7 +122,8 @@ namespace Microsoft.Quantum.Samples.Superdense {
 
     /// # Summary
     /// Decodes two bits of information from a joint state of two qubits.
-    operation SuperdenseDecode( qubit1 : Qubit, qubit2 : Qubit ) : (Bool,Bool) {
+    operation SuperdenseDecode( qubit1 : Qubit, qubit2 : Qubit ) : (Bool,Bool) 
+	{
         body {
 
             // If bit1 in the encoding procedure was true we applied Z to
@@ -125,15 +140,24 @@ namespace Microsoft.Quantum.Samples.Superdense {
         }
     }
 
-	 operation SuperdenseCodingTest (lbit1 : Int, lbit2 : Int) : (Int) {
-        body {
+	operation SuperdenseCodingTest (lbit1 : Int, lbit2 : Int) : (Bool,Bool) 
+	{
+	       body {
 
             // Calls SuperdenseCodingProtocolRun 4 times with 
             // arguments [a;b] where a tuple of integers (a,b) belongs to 
             // the Cartesian square {0,1}².
-            IterateThroughCartesianPower(lbit1,lbit2,SuperdenseCodingProtocolRun);
-			return 1;
-        }
+			
+            //IterateThroughCartesianPower(lbit1,lbit2, SuperdenseCodingProtocolRun );
+			
+			mutable bitstosend = new Int[2];
+			set bitstosend[0] = 1;
+			set bitstosend[1] = 1;
+			
+			let (b1 , b2) = SuperdenseCodingProtocolRun(bitstosend);
+			return (b1, b2);
+					
+           }
     }
 
 }

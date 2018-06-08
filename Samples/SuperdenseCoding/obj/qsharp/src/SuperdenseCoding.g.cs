@@ -4,19 +4,19 @@ using Microsoft.Quantum.Primitive;
 using Microsoft.Quantum.Simulation.Core;
 using Microsoft.Quantum.MetaData.Attributes;
 
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.Superdense", "SuperdenseCodingProtocolRun (bitsAsInt : Int[]) : ()", new string[] { }, "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 1723L, 37L, 69L)]
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.Superdense", "CreateEPRPair (qubit1 : Qubit, qubit2 : Qubit) : ()", new string[] { }, "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 3241L, 73L, 68L)]
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.Superdense", "SuperdenseEncode (bit1 : Bool, bit2 : Bool, qubit : Qubit) : ()", new string[] { }, "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 4201L, 99L, 80L)]
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.Superdense", "SuperdenseDecode (qubit1 : Qubit, qubit2 : Qubit) : (Bool, Bool)", new string[] { }, "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 4489L, 108L, 80L)]
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.Superdense", "SuperdenseCodingTest (lbit1 : Int, lbit2 : Int) : Int", new string[] { }, "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 5199L, 125L, 69L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseCodingProtocolRun (bitsAsInt : Int[]) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 1814L, 40L, 4L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "CreateEPRPair (qubit1 : Qubit, qubit2 : Qubit) : ()", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 3571L, 89L, 2L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseEncode (bit1 : Bool, bit2 : Bool, qubit : Qubit) : ()", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 4534L, 116L, 2L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseDecode (qubit1 : Qubit, qubit2 : Qubit) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 4825L, 126L, 2L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseCodingTest (lbit1 : Int, lbit2 : Int) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 5543L, 144L, 2L)]
 #line hidden
-namespace Microsoft.Quantum.Samples.Superdense
+namespace Microsoft.Quantum.Samples.SuperdenseEx
 {
-    public class SuperdenseCodingProtocolRun : Operation<QArray<Int64>, QVoid>
+    public class SuperdenseCodingProtocolRun : Operation<QArray<Int64>, (Boolean,Boolean)>
     {
         public SuperdenseCodingProtocolRun(IOperationFactory m) : base(m)
         {
-            this.Dependencies = new Type[] { typeof(Microsoft.Quantum.Primitive.Allocate), typeof(Microsoft.Quantum.Canon.AssertBoolEqual), typeof(Microsoft.Quantum.Canon.AssertIntEqual), typeof(Microsoft.Quantum.Samples.Superdense.CreateEPRPair), typeof(Microsoft.Quantum.Primitive.Release), typeof(Microsoft.Quantum.Primitive.ResetAll), typeof(Microsoft.Quantum.Samples.Superdense.SuperdenseDecode), typeof(Microsoft.Quantum.Samples.Superdense.SuperdenseEncode) };
+            this.Dependencies = new Type[] { typeof(Microsoft.Quantum.Primitive.Allocate), typeof(Microsoft.Quantum.Canon.AssertBoolEqual), typeof(Microsoft.Quantum.Canon.AssertIntEqual), typeof(Microsoft.Quantum.Samples.SuperdenseEx.CreateEPRPair), typeof(Microsoft.Quantum.Primitive.Release), typeof(Microsoft.Quantum.Primitive.ResetAll), typeof(Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseDecode), typeof(Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseEncode) };
         }
 
         public override Type[] Dependencies
@@ -52,7 +52,7 @@ namespace Microsoft.Quantum.Samples.Superdense
         {
             get
             {
-                return this.Factory.Get<ICallable<(Qubit,Qubit), QVoid>, Microsoft.Quantum.Samples.Superdense.CreateEPRPair>();
+                return this.Factory.Get<ICallable<(Qubit,Qubit), QVoid>, Microsoft.Quantum.Samples.SuperdenseEx.CreateEPRPair>();
             }
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Quantum.Samples.Superdense
         {
             get
             {
-                return this.Factory.Get<ICallable<(Qubit,Qubit), (Boolean,Boolean)>, Microsoft.Quantum.Samples.Superdense.SuperdenseDecode>();
+                return this.Factory.Get<ICallable<(Qubit,Qubit), (Boolean,Boolean)>, Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseDecode>();
             }
         }
 
@@ -84,65 +84,85 @@ namespace Microsoft.Quantum.Samples.Superdense
         {
             get
             {
-                return this.Factory.Get<ICallable<(Boolean,Boolean,Qubit), QVoid>, Microsoft.Quantum.Samples.Superdense.SuperdenseEncode>();
+                return this.Factory.Get<ICallable<(Boolean,Boolean,Qubit), QVoid>, Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseEncode>();
             }
         }
 
-        public override Func<QArray<Int64>, QVoid> Body
+        public override Func<QArray<Int64>, (Boolean,Boolean)> Body
         {
             get => (bitsAsInt) =>
             {
 #line hidden
-                this.Factory.StartOperation("Microsoft.Quantum.Samples.Superdense.SuperdenseCodingProtocolRun", OperationFunctor.Body, bitsAsInt);
-                var __result__ = default(QVoid);
+                this.Factory.StartOperation("Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseCodingProtocolRun", OperationFunctor.Body, bitsAsInt);
+                var __result__ = default((Boolean,Boolean));
                 try
                 {
-#line 39 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 42 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     MicrosoftQuantumCanonAssertIntEqual.Apply((2L, bitsAsInt.Count, "Array bitsAsInt must have length 2"));
                     // Get the bits we are going to transmit.
-#line 42 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 45 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     var (bit1,bit2) = ((bitsAsInt[0L] == 0L), (bitsAsInt[1L] == 0L));
+#line 46 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    var bit1sent = false;
+#line 47 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    var bit2sent = false;
                     // Get a temporary register for the protocol run.
-#line 45 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 49 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     var qubits = Allocate.Apply(2L);
                     // introduce convenient names for the qubits
-#line 47 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 51 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     var (qubit1,qubit2) = (qubits[0L], qubits[1L]);
                     // Create an EPR pair shared between A and B.
-#line 50 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 54 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     CreateEPRPair.Apply((qubit1, qubit2));
                     // A encodes 2 bits in the first qubit.
-#line 53 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 57 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     SuperdenseEncode.Apply((bit1, bit2, qubit1));
                     // "Send" qubit to B and let B decode two bits.
-#line 56 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 60 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     var (decodedBit1,decodedBit2) = SuperdenseDecode.Apply<(Boolean,Boolean)>((qubit1, qubit2));
                     // Now test if the bits were transfered correctly.
-#line 59 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 65 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    if ((bit1 == decodedBit1))
+                    {
+#line 65 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                        bit1sent = true;
+                    }
+
+#line 66 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     MicrosoftQuantumCanonAssertBoolEqual.Apply((bit1, decodedBit1, "bit1 should be transfered correctly"));
-#line 60 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 69 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    if ((bit2 == decodedBit2))
+                    {
+#line 69 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                        bit2sent = true;
+                    }
+
+#line 70 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     MicrosoftQuantumCanonAssertBoolEqual.Apply((bit2, decodedBit2, "bit2 should be transfered correctly"));
                     // Make sure that we return qubits back in 0 state.
-#line 63 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 76 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     ResetAll.Apply(qubits);
 #line hidden
                     Release.Apply(qubits);
 #line hidden
+                    __result__ = (bit1sent, bit2sent);
+#line 78 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     return __result__;
                 }
                 finally
                 {
 #line hidden
-                    this.Factory.EndOperation("Microsoft.Quantum.Samples.Superdense.SuperdenseCodingProtocolRun", OperationFunctor.Body, __result__);
+                    this.Factory.EndOperation("Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseCodingProtocolRun", OperationFunctor.Body, __result__);
                 }
             }
 
             ;
         }
 
-        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, QArray<Int64> bitsAsInt)
+        public static System.Threading.Tasks.Task<(Boolean,Boolean)> Run(IOperationFactory __m__, QArray<Int64> bitsAsInt)
         {
-            return __m__.Run<SuperdenseCodingProtocolRun, QArray<Int64>, QVoid>(bitsAsInt);
+            return __m__.Run<SuperdenseCodingProtocolRun, QArray<Int64>, (Boolean,Boolean)>(bitsAsInt);
         }
     }
 
@@ -187,31 +207,31 @@ namespace Microsoft.Quantum.Samples.Superdense
             get => (_args) =>
             {
 #line hidden
-                this.Factory.StartOperation("Microsoft.Quantum.Samples.Superdense.CreateEPRPair", OperationFunctor.Body, _args);
+                this.Factory.StartOperation("Microsoft.Quantum.Samples.SuperdenseEx.CreateEPRPair", OperationFunctor.Body, _args);
                 var __result__ = default(QVoid);
                 try
                 {
                     var (qubit1,qubit2) = _args;
                     // Check that the inputs are as expected.
-#line 76 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 92 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     Assert.Apply((new QArray<Pauli>()
                     {Pauli.PauliZ}, new QArray<Qubit>()
                     {qubit1}, Result.Zero, "First qubit is expected to be in a zero state"));
-#line 78 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 94 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     Assert.Apply((new QArray<Pauli>()
                     {Pauli.PauliZ}, new QArray<Qubit>()
                     {qubit2}, Result.Zero, "Second qubit is expected to be in a zero state"));
                     // Make an EPR pair.
-#line 82 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 98 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     MicrosoftQuantumPrimitiveH.Apply(qubit1);
-#line 83 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 99 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     MicrosoftQuantumPrimitiveCNOT.Apply((qubit1, qubit2));
                     // Check that we indeed prepared one.
-#line 86 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 102 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     Assert.Apply((new QArray<Pauli>()
                     {Pauli.PauliZ, Pauli.PauliZ}, new QArray<Qubit>()
                     {qubit1, qubit2}, Result.Zero, "EPR state must be +1 eigenstate of ZZ"));
-#line 90 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 106 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     Assert.Apply((new QArray<Pauli>()
                     {Pauli.PauliX, Pauli.PauliX}, new QArray<Qubit>()
                     {qubit1, qubit2}, Result.Zero, "EPR state must be +1 eigenstate of XX"));
@@ -221,7 +241,7 @@ namespace Microsoft.Quantum.Samples.Superdense
                 finally
                 {
 #line hidden
-                    this.Factory.EndOperation("Microsoft.Quantum.Samples.Superdense.CreateEPRPair", OperationFunctor.Body, __result__);
+                    this.Factory.EndOperation("Microsoft.Quantum.Samples.SuperdenseEx.CreateEPRPair", OperationFunctor.Body, __result__);
                 }
             }
 
@@ -267,22 +287,22 @@ namespace Microsoft.Quantum.Samples.Superdense
             get => (_args) =>
             {
 #line hidden
-                this.Factory.StartOperation("Microsoft.Quantum.Samples.Superdense.SuperdenseEncode", OperationFunctor.Body, _args);
+                this.Factory.StartOperation("Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseEncode", OperationFunctor.Body, _args);
                 var __result__ = default(QVoid);
                 try
                 {
                     var (bit1,bit2,qubit) = _args;
-#line 101 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 118 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     if (bit1)
                     {
-#line 101 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 118 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                         MicrosoftQuantumPrimitiveZ.Apply(qubit);
                     }
 
-#line 102 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 119 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     if (bit2)
                     {
-#line 102 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 119 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                         MicrosoftQuantumPrimitiveX.Apply(qubit);
                     }
 
@@ -292,7 +312,7 @@ namespace Microsoft.Quantum.Samples.Superdense
                 finally
                 {
 #line hidden
-                    this.Factory.EndOperation("Microsoft.Quantum.Samples.Superdense.SuperdenseEncode", OperationFunctor.Body, __result__);
+                    this.Factory.EndOperation("Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseEncode", OperationFunctor.Body, __result__);
                 }
             }
 
@@ -330,7 +350,7 @@ namespace Microsoft.Quantum.Samples.Superdense
             get => (_args) =>
             {
 #line hidden
-                this.Factory.StartOperation("Microsoft.Quantum.Samples.Superdense.SuperdenseDecode", OperationFunctor.Body, _args);
+                this.Factory.StartOperation("Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseDecode", OperationFunctor.Body, _args);
                 var __result__ = default((Boolean,Boolean));
                 try
                 {
@@ -338,26 +358,26 @@ namespace Microsoft.Quantum.Samples.Superdense
                     // If bit1 in the encoding procedure was true we applied Z to
                     // the first qubit which anti-commutes with XX, therefore bit1 
                     // can be read out from XX measurement.
-#line 114 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 132 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     var bit1 = (Measure.Apply<Result>((new QArray<Pauli>()
                     {Pauli.PauliX, Pauli.PauliX}, new QArray<Qubit>()
                     {qubit1, qubit2})) == Result.One);
                     // If bit2 in the encoding procedure was true we applied X to
                     // the first qubit which anti-commutes with ZZ, therefore bit2 
                     // can be read out from ZZ measurement.
-#line 119 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 137 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     var bit2 = (Measure.Apply<Result>((new QArray<Pauli>()
                     {Pauli.PauliZ, Pauli.PauliZ}, new QArray<Qubit>()
                     {qubit1, qubit2})) == Result.One);
 #line hidden
                     __result__ = (bit1, bit2);
-#line 121 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+#line 139 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     return __result__;
                 }
                 finally
                 {
 #line hidden
-                    this.Factory.EndOperation("Microsoft.Quantum.Samples.Superdense.SuperdenseDecode", OperationFunctor.Body, __result__);
+                    this.Factory.EndOperation("Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseDecode", OperationFunctor.Body, __result__);
                 }
             }
 
@@ -370,11 +390,11 @@ namespace Microsoft.Quantum.Samples.Superdense
         }
     }
 
-    public class SuperdenseCodingTest : Operation<(Int64,Int64), Int64>
+    public class SuperdenseCodingTest : Operation<(Int64,Int64), (Boolean,Boolean)>
     {
         public SuperdenseCodingTest(IOperationFactory m) : base(m)
         {
-            this.Dependencies = new Type[] { typeof(Microsoft.Quantum.Canon.IterateThroughCartesianPower), typeof(Microsoft.Quantum.Samples.Superdense.SuperdenseCodingProtocolRun) };
+            this.Dependencies = new Type[] { typeof(Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseCodingProtocolRun) };
         }
 
         public override Type[] Dependencies
@@ -382,55 +402,57 @@ namespace Microsoft.Quantum.Samples.Superdense
             get;
         }
 
-        protected ICallable<(Int64,Int64,ICallable), QVoid> MicrosoftQuantumCanonIterateThroughCartesianPower
+        protected ICallable<QArray<Int64>, (Boolean,Boolean)> SuperdenseCodingProtocolRun
         {
             get
             {
-                return this.Factory.Get<ICallable<(Int64,Int64,ICallable), QVoid>, Microsoft.Quantum.Canon.IterateThroughCartesianPower>();
+                return this.Factory.Get<ICallable<QArray<Int64>, (Boolean,Boolean)>, Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseCodingProtocolRun>();
             }
         }
 
-        protected ICallable<QArray<Int64>, QVoid> SuperdenseCodingProtocolRun
-        {
-            get
-            {
-                return this.Factory.Get<ICallable<QArray<Int64>, QVoid>, Microsoft.Quantum.Samples.Superdense.SuperdenseCodingProtocolRun>();
-            }
-        }
-
-        public override Func<(Int64,Int64), Int64> Body
+        public override Func<(Int64,Int64), (Boolean,Boolean)> Body
         {
             get => (_args) =>
             {
 #line hidden
-                this.Factory.StartOperation("Microsoft.Quantum.Samples.Superdense.SuperdenseCodingTest", OperationFunctor.Body, _args);
-                var __result__ = default(Int64);
+                this.Factory.StartOperation("Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseCodingTest", OperationFunctor.Body, _args);
+                var __result__ = default((Boolean,Boolean));
                 try
                 {
                     var (lbit1,lbit2) = _args;
                     // Calls SuperdenseCodingProtocolRun 4 times with 
                     // arguments [a;b] where a tuple of integers (a,b) belongs to 
                     // the Cartesian square {0,1}².
-#line 131 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
-                    MicrosoftQuantumCanonIterateThroughCartesianPower.Apply((lbit1, lbit2, ((ICallable)SuperdenseCodingProtocolRun)));
+                    //mutable bit1sent = false;
+                    //mutable bit2sent = false;
+                    //IterateThroughCartesianPower(lbit1,lbit2, SuperdenseCodingProtocolRun );
+#line 154 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    var bitstosend = new QArray<Int64>(2L);
+#line 155 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    bitstosend[0L] = 1L;
+#line 156 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    bitstosend[1L] = 1L;
+                    //mutable res = new Result;
+#line 158 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    var (b1,b2) = SuperdenseCodingProtocolRun.Apply<(Boolean,Boolean)>(bitstosend);
 #line hidden
-                    __result__ = 1L;
-#line 132 "C:\\Users\\vmadmin\\Source\\Repos\\Quantum\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
+                    __result__ = (b1, b2);
+#line 159 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     return __result__;
                 }
                 finally
                 {
 #line hidden
-                    this.Factory.EndOperation("Microsoft.Quantum.Samples.Superdense.SuperdenseCodingTest", OperationFunctor.Body, __result__);
+                    this.Factory.EndOperation("Microsoft.Quantum.Samples.SuperdenseEx.SuperdenseCodingTest", OperationFunctor.Body, __result__);
                 }
             }
 
             ;
         }
 
-        public static System.Threading.Tasks.Task<Int64> Run(IOperationFactory __m__, Int64 lbit1, Int64 lbit2)
+        public static System.Threading.Tasks.Task<(Boolean,Boolean)> Run(IOperationFactory __m__, Int64 lbit1, Int64 lbit2)
         {
-            return __m__.Run<SuperdenseCodingTest, (Int64,Int64), Int64>((lbit1, lbit2));
+            return __m__.Run<SuperdenseCodingTest, (Int64,Int64), (Boolean,Boolean)>((lbit1, lbit2));
         }
     }
 }
