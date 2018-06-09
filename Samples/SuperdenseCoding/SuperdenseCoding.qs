@@ -36,7 +36,7 @@ namespace Microsoft.Quantum.Samples.SuperdenseEx
     /// in the array of Integers, so this function can be used
     /// with IterateThroughCartesianPower. 
    //operation SuperdenseCodingProtocolRun( bitsAsInt : Int[] ) : () {
-   operation SuperdenseCodingProtocolRun( bitsAsInt : Int[] ) : (Bool , Bool) 
+   operation SuperdenseCodingProtocolRun( bitsAsInt : Int[] ) : (Bool, Bool) 
    {
 	        body {
             AssertIntEqual(2,Length(bitsAsInt),"Array bitsAsInt must have length 2");
@@ -144,15 +144,16 @@ namespace Microsoft.Quantum.Samples.SuperdenseEx
 	{
 	       body {
 
-            // Calls SuperdenseCodingProtocolRun 4 times with 
-            // arguments [a;b] where a tuple of integers (a,b) belongs to 
+            // Calls SuperdenseCodingProtocolRun 1 time with 
+            // arguments [a;b]coming from the driver where a tuple of integers (a,b) belongs to 
             // the Cartesian square {0,1}².
 			
             //IterateThroughCartesianPower(lbit1,lbit2, SuperdenseCodingProtocolRun );
 			
+			
 			mutable bitstosend = new Int[2];
-			set bitstosend[0] = 1;
-			set bitstosend[1] = 1;
+			set bitstosend[0] = lbit1;
+			set bitstosend[1] = lbit2;
 			
 			let (b1 , b2) = SuperdenseCodingProtocolRun(bitstosend);
 			return (b1, b2);

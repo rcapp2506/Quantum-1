@@ -19,3 +19,4 @@ C:\Users\r_cap\Source\Repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcore
 C:\Users\r_cap\Source\Repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.AssemblyInfo.cs
 C:\Users\r_cap\Source\Repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.dll
 C:\Users\r_cap\Source\Repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.pdb
+C:\Users\r_cap\Source\Repos\Quantum-1\Samples\SuperdenseCoding\obj\Debug\netcoreapp2.0\SuperdenseCoding.csprojAssemblyReference.cache

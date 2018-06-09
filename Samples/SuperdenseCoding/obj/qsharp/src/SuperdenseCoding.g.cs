@@ -4,11 +4,11 @@ using Microsoft.Quantum.Primitive;
 using Microsoft.Quantum.Simulation.Core;
 using Microsoft.Quantum.MetaData.Attributes;
 
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseCodingProtocolRun (bitsAsInt : Int[]) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 1814L, 40L, 4L)]
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "CreateEPRPair (qubit1 : Qubit, qubit2 : Qubit) : ()", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 3571L, 89L, 2L)]
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseEncode (bit1 : Bool, bit2 : Bool, qubit : Qubit) : ()", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 4534L, 116L, 2L)]
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseDecode (qubit1 : Qubit, qubit2 : Qubit) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 4825L, 126L, 2L)]
-[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseCodingTest (lbit1 : Int, lbit2 : Int) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 5543L, 144L, 2L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseCodingProtocolRun (bitsAsInt : Int[]) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 1813L, 40L, 4L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "CreateEPRPair (qubit1 : Qubit, qubit2 : Qubit) : ()", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 3570L, 89L, 2L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseEncode (bit1 : Bool, bit2 : Bool, qubit : Qubit) : ()", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 4533L, 116L, 2L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseDecode (qubit1 : Qubit, qubit2 : Qubit) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 4824L, 126L, 2L)]
+[assembly: OperationDeclaration("Microsoft.Quantum.Samples.SuperdenseEx", "SuperdenseCodingTest (lbit1 : Int, lbit2 : Int) : (Bool, Bool)", new string[] { }, "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs", 5542L, 144L, 2L)]
 #line hidden
 namespace Microsoft.Quantum.Samples.SuperdenseEx
 {
@@ -420,19 +420,16 @@ namespace Microsoft.Quantum.Samples.SuperdenseEx
                 try
                 {
                     var (lbit1,lbit2) = _args;
-                    // Calls SuperdenseCodingProtocolRun 4 times with 
-                    // arguments [a;b] where a tuple of integers (a,b) belongs to 
+                    // Calls SuperdenseCodingProtocolRun 1 time with 
+                    // arguments [a;b]coming from the driver where a tuple of integers (a,b) belongs to 
                     // the Cartesian square {0,1}².
-                    //mutable bit1sent = false;
-                    //mutable bit2sent = false;
                     //IterateThroughCartesianPower(lbit1,lbit2, SuperdenseCodingProtocolRun );
 #line 154 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     var bitstosend = new QArray<Int64>(2L);
 #line 155 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
-                    bitstosend[0L] = 1L;
+                    bitstosend[0L] = lbit1;
 #line 156 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
-                    bitstosend[1L] = 1L;
-                    //mutable res = new Result;
+                    bitstosend[1L] = lbit2;
 #line 158 "C:\\Users\\r_cap\\Source\\Repos\\Quantum-1\\Samples\\SuperdenseCoding\\SuperdenseCoding.qs"
                     var (b1,b2) = SuperdenseCodingProtocolRun.Apply<(Boolean,Boolean)>(bitstosend);
 #line hidden
